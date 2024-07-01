@@ -16,7 +16,7 @@ export const signIn = async({ email, password}:signInProps) => {
 }
 export const signUp = async(userData: SignUpParams) => {
     const {email, password, firstName, lastName} = userData;
-    
+    const name = `${firstName} ${lastName}`;
     
     try {
         //Create a user account
@@ -26,7 +26,7 @@ export const signUp = async(userData: SignUpParams) => {
             ID.unique(), 
             email, 
             password, 
-            `${firstName} ${lastName}`
+            name,
         );
 
         const session = await account.createEmailPasswordSession(email, password);
@@ -56,3 +56,14 @@ export async function getLoggedInUser() {
     }
   }
   
+
+export const logoutAccount  = async () => {
+    try {
+        const { account } = await createSessionClient();
+        cookies().delete('appwrite-session');
+
+        await account.deleteSession('current');
+    } catch (error) {
+        return null;
+    }
+}
