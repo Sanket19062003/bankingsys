@@ -12,8 +12,8 @@ const ibmPlexSerif = IBM_Plex_Serif({
 })
 
 export const metadata: Metadata = {
-  title: "Garud",
-  description: "Garud is a modern banking platform for everyone.",
+  title: "Transac",
+  description: "Your own integrated bankingZone",
   icons: {
     icon: '/icons/logo.svg'
   }
